@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import HomePage from "./pages/HomePage";
+import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage";
+import UserPage from "./pages/UserPage";
+import ActivationPage from "./pages/ActivationPage";
+import { Route, Routes } from "react-router-dom";
+import NavigationBar from "./components/NavigationBar";
 
 function App() {
+  // const [path, setPath] = useState(window.location.pathname);
+  // const onClickLink = (e) => {
+  //   e.preventDefault();
+  //   const path = e.currentTarget.attributes.href.value;
+  //   window.history.pushState({}, "", path);
+  //   setPath(path);
+  // };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavigationBar />
+      <div className="container pt-3">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/user/:id" element={<UserPage />} />
+          <Route path="/activate/:token" element={<ActivationPage />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
